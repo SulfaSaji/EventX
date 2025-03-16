@@ -4,13 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us - EventX</title>
+  
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  
+  <!-- AOS (Animate On Scroll) Library CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  
   <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
+  
+  <style>
+    /* Smooth Animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease-in-out;
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hover Effect for Team Members */
+    .team-member {
+      transition: transform 0.3s ease-in-out;
+    }
+    .team-member:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
-  
+
   <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
@@ -30,26 +56,26 @@
       </div>
     </div>
   </nav>
-  
+
   <!-- About Us Section -->
   <section class="py-5">
     <div class="container">
-      <h1 class="text-center mb-4">About Us</h1>
-      <p class="lead text-center">Learn more about EventX, our mission, vision, and core values.</p>
+      <h1 class="text-center mb-4" data-aos="fade-down">About Us</h1>
+      <p class="lead text-center" data-aos="fade-up">Learn more about EventX, our mission, vision, and core values.</p>
+      
       <div class="row mt-5">
-        <div class="col-md-6">
+        <div class="col-md-6" data-aos="fade-right">
           <h2>Our Background</h2>
           <p>
-            EventX was founded with a passion for creative innovation and a dedication to excellence in live streaming, media production, digital marketing, event management, and esports services. Over the years, we have grown into a dynamic team committed to delivering outstanding results for our clients.
+            EventX was founded with a passion for creative innovation and a dedication to excellence in live streaming, media production, digital marketing, event management, and esports services.
           </p>
           <h3>Our Vision</h3>
-          <p>
-            To be the leading provider of multimedia and digital solutions that empower businesses and individuals to tell their stories and engage with audiences worldwide.
-          </p>
+          <p>To be the leading provider of multimedia and digital solutions that empower businesses and individuals worldwide.</p>
           <h3>Our Mission</h3>
-          <p>
-            Our mission is to create high-quality, innovative, and immersive digital experiences that drive success and inspire creativity.
-          </p>
+          <p>Our mission is to create high-quality, innovative, and immersive digital experiences that drive success and inspire creativity.</p>
+        </div>
+
+        <div class="col-md-6" data-aos="fade-left">
           <h3>Our Core Values</h3>
           <ul>
             <li>Innovation</li>
@@ -62,39 +88,71 @@
       </div>
     </div>
   </section>
-  
+
   <!-- Team Section -->
   <section class="py-5 bg-light">
     <div class="container">
-      <h2 class="text-center mb-4">Meet Our Team</h2>
+      <h2 class="text-center mb-4" data-aos="fade-down">Meet Our Team</h2>
+      
       <div class="row">
-        
-        <div class="col-md-4 text-center mb-4">
-          <h5>John Doe</h5>
-          <p>Founder & CEO</p>
+        <div class="col-md-4 text-center mb-4" data-aos="zoom-in">
+          <div class="team-member p-4 bg-white shadow-sm rounded">
+            <h5>John Doe</h5>
+            <p>Founder & CEO</p>
+          </div>
         </div>
         
-        <div class="col-md-4 text-center mb-4">
-          <h5>Jane Smith</h5>
-          <p>Creative Director</p>
+        <div class="col-md-4 text-center mb-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="team-member p-4 bg-white shadow-sm rounded">
+            <h5>Jane Smith</h5>
+            <p>Creative Director</p>
+          </div>
         </div>
        
-        <div class="col-md-4 text-center mb-4">
-          <h5>Mike Johnson</h5>
-          <p>Head of Production</p>
+        <div class="col-md-4 text-center mb-4" data-aos="zoom-in" data-aos-delay="400">
+          <div class="team-member p-4 bg-white shadow-sm rounded">
+            <h5>Mike Johnson</h5>
+            <p>Head of Production</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
-  
+
   <!-- Footer -->
   <footer class="bg-dark text-white text-center py-3">
     <div class="container">
       <p>&copy; 2025 ABC Studios. All Rights Reserved.</p>
     </div>
   </footer>
-  
+
   <!-- Bootstrap Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- AOS Library (Animate On Scroll) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init(); // Initialize AOS
+  </script>
+
+  <!-- Custom JS for Smooth Fade-in -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      function checkScroll() {
+        fadeElements.forEach(element => {
+          const position = element.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          if (position < windowHeight - 100) {
+            element.classList.add('show');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', checkScroll);
+      checkScroll(); // Initial check
+    });
+  </script>
 </body>
 </html>
